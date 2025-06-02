@@ -1,0 +1,43 @@
+@media (max-width: 768px) {
+  .image-section,
+  .details-section {
+    padding: 15px;
+  }
+
+  .similar-products .d-flex {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .similar-products div {
+    width: 100% !important;
+  }
+
+  .btn {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 14px;
+    padding: 5px;
+  }
+}
+
+@media (max-width: 576px) {
+  .image-section img {
+    width: 100%;
+    height: auto;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 12px;
+  }
+}

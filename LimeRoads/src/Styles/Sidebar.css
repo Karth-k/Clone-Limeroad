@@ -1,0 +1,16 @@
+.sidebar {
+  width: 100%;
+  max-width: 220px; 
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 10px;
+  max-height: 80vh; 
+  overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    max-width: 100%;
+    max-height: none;
+  }
+}
