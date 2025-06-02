@@ -4,7 +4,7 @@ import {  useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
-
+const API_URL = process.env.REACT_APP_BACKEND_URL;
 const RegistrationPage = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -42,7 +42,7 @@ const RegistrationPage = () => {
     }
 
     try {
-      await axios.post("http://localhost:5000/api/register", formData);
+      await axios.post(`${API_URL}/api/register`, formData);
       Swal.fire({
         title: "Good job!",
         text: "Registration successful!",

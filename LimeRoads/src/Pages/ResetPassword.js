@@ -7,6 +7,7 @@ import "../Styles/Profile.css";
 function ResetPassword() {
   const { token } = useParams(); 
   const navigate = useNavigate();
+  const API_URL = process.env.REACT_APP_BACKEND_URL;
   const [passwords, setPasswords] = useState({
     newPassword: "",
     confirmPassword: "",
@@ -39,7 +40,7 @@ function ResetPassword() {
     }
 
     try {
-      const response = await axios.post(`http://localhost:5000/api/reset-password/${token}`, { 
+      const response = await axios.post(`${API_URL}/api/reset-password/${token}`, { 
           newPassword: passwords.newPassword }
       );
 

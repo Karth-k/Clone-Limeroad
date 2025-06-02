@@ -6,7 +6,7 @@ const VendorProducts = () => {
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
   const token = localStorage.getItem("authToken");
-
+  const API_URL = process.env.REACT_APP_BACKEND_URL;
   useEffect(() => {
     const fetchVendorProducts = async () => {
       try {
@@ -15,7 +15,7 @@ const VendorProducts = () => {
           return;
         }
 
-        const response = await axios.get("http://localhost:5000/api/vendor-products", {
+        const response = await axios.get(`${API_URL}/api/vendor-products`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 

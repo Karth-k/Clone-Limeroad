@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Vendor = () => {
   const navigate = useNavigate();
-
+  const API_URL = process.env.REACT_APP_BACKEND_URL;
   const handleLogout = () => {
     localStorage.removeItem("authToken");
     localStorage.removeItem("role");  
@@ -130,7 +130,7 @@ formData.size.forEach((size) => {
 
 
 try{
-const response = await axios.post("http://localhost:5000/api/addProduct", formDataToSend, {
+const response = await axios.post(`${API_URL}/api/addProduct`, formDataToSend, {
   headers: {
     "Content-Type": "multipart/form-data",
     Authorization: `Bearer ${token}`,

@@ -16,6 +16,7 @@ const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY)
 const Buynow = () => {
   const cart = useSelector((state) => state.cart);
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const API_URL = process.env.REACT_APP_BACKEND_URL;
  
 
 
@@ -61,7 +62,7 @@ const Buynow = () => {
       }));
       
       const { data } = await axios.post(
-        "http://localhost:5000/api/payment",
+        `${API_URL}/api/payment`,
         { cartItems: formattedCart, shippingAddress: addresses }, 
         { headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" } }
       );

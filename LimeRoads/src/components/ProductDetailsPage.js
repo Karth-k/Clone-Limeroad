@@ -26,6 +26,7 @@
     const { id } = useParams();
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const API_URL = process.env.REACT_APP_BACKEND_URL;
     const [product, setProduct] = useState(null);
     const [similarProducts, setSimilarProducts] = useState([]);
     const [selectedSize, setSelectedSize] = useState(null);
@@ -37,13 +38,13 @@
     useEffect(() => {
       const fetchProduct = async () => {
         try {
-          const response = await axios.get(`http://localhost:5000/api/products/${id}`);
+          const response = await axios.get(`${API_URL}/api/products/${id}`);
           const productData = response.data;
           console.log("Fetched Product Data:", productData);
           setProduct(productData);
           setStock(productData.Quantity);
     
-          const similarResponse = await axios.get("http://localhost:5000/api/products");
+          const similarResponse = await axios.get(`${API_URL}/api/products`);
     
           const filteredProducts = similarResponse.data.filter(item =>
             item.category?.type === productData.category?.type &&

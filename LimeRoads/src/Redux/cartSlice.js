@@ -3,12 +3,13 @@ import Swal from "sweetalert2";
 
 const initialState = JSON.parse(localStorage.getItem("cart")) || [];
 
+const API_URL = process.env.REACT_APP_BACKEND_URL;
 const syncCartWithBackend = async (cart) => {
   try {
     const authToken = localStorage.getItem("authToken");
     if (!authToken) return;
 
-    await fetch("http://localhost:5000/api/cart", {
+    await fetch(`${API_URL}/api/cart`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -31,7 +32,7 @@ const fetchCartFromBackend = async (dispatch) => {
     const authToken = localStorage.getItem("authToken");
     if (!authToken) return;
 
-    const response = await fetch("http://localhost:5000/api/show/cart", {
+    const response = await fetch(`${API_URL}/api/show/cart`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

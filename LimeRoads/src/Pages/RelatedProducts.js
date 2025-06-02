@@ -5,9 +5,9 @@ import axios from "axios";
 const RelatedProducts = () => {
   const { gender, model, type } = useParams();
   const [products, setProducts] = useState([]);
-
+  const API_URL = process.env.REACT_APP_BACKEND_URL;
   useEffect(() => {
-    axios.get("http://localhost:5000/api/products")
+    axios.get(`${API_URL}/api/products`)
       .then((response) => {
         const filteredProducts = response.data.filter((product) => {
           return (
