@@ -16,6 +16,7 @@ function Profile() {
   const handleClose = () => setShowModal(false);
   const handleShow = () => setShowModal(true);
   const dispatch = useDispatch();
+  const API_URL = process.env.REACT_APP_BACKEND_URL;
 
 
   const navigate = useNavigate();
@@ -57,7 +58,7 @@ function Profile() {
     }
 
     try {
-      const response = await axios.post("http://localhost:5000/api/login", {
+      const response = await axios.post(`${API_URL}/api/login`, {
         email: credentials.email,
         password: credentials.password
       });

@@ -13,7 +13,7 @@ const ConfirmOrder = () => {
 
   const queryParams = new URLSearchParams(location.search);
   const session_id = queryParams.get("session_id");
-
+  const API_URL = process.env.REACT_APP_BACKEND_URL;
   useEffect(() => {
     if (!session_id) {
       setError("No session ID found."); 
@@ -24,7 +24,7 @@ const ConfirmOrder = () => {
     const confirmOrder = async () => {
       try {
         
-        const { data } = await axios.post("http://localhost:5000/api/orders/confirm-order", 
+        const { data } = await axios.post(`${API_URL}/api/orders/confirm-order`, 
           { session_id }, 
           { headers: { "Content-Type": "application/json" } }
         );

@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 
 function ForgotPassword({ handleClose }) {
   const [email, setEmail] = useState("");
-
+  const API_URL = process.env.REACT_APP_BACKEND_URL;
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email) {
@@ -17,7 +17,7 @@ function ForgotPassword({ handleClose }) {
     }
 
     try {
-      const response = await axios.post("http://localhost:5000/api/forgot-password", {
+      const response = await axios.post(`${API_URL}/api/forgot-password`, {
         email
       });
 

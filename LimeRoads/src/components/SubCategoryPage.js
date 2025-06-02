@@ -9,11 +9,11 @@ const SubCategoryPage = () => {
   const { gender, type } = useParams(); 
   const [products, setProducts] = useState([]);
   const navigate = useNavigate(); 
-
+  const API_URL = process.env.REACT_APP_BACKEND_URL;
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/products");
+        const response = await axios.get(`${API_URL}/api/products`);
         const filteredProducts = response.data.filter(
           (product) => product.category.gender.toLowerCase() === gender.toLowerCase() &&  product.category.type.toLowerCase() === type.toLowerCase());
         setProducts(filteredProducts);

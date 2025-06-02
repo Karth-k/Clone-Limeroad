@@ -6,11 +6,11 @@ import { Link } from "react-router-dom";
 const Landingpage = ({ gender, type }) => {
   const [products, setProducts] = useState([]);
   const [likes, setLikes] = useState({});
-
+  const API_URL = process.env.REACT_APP_BACKEND_URL;
   useEffect(() => {
     
     axios
-    .get("http://localhost:5000/api/products")
+    .get(`${API_URL}/api/products`)
     .then((response) => {
         const filteredProducts = response.data.filter((product) => {
           if (type === "My Feed") {

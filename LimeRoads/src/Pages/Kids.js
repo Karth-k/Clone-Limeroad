@@ -10,11 +10,11 @@ const Kids = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   const navigate = useNavigate(); 
-
+  const API_URL = process.env.REACT_APP_BACKEND_URL;
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/products")
+        const response = await axios.get(`${API_URL}/api/products`)
         const KidsProducts = response.data.filter(
           (product) => product.category.gender === "Kids"
         );
